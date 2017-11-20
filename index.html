@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+	<!-- Google Analytics -->
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		  ga('create', 'UA-5202018-1', 'auto');
+		  ga('require', 'GTM-KBJS8NF');
+		  ga('send', 'pageview');
+		</script>
+
+	<!-- End Google Analytics -->
+
+		<meta charset="utf-8">
+		<title>CSS 100% Height Footer to bottom</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<style>
+		html,body
+		{
+			margin:0;
+			padding:0;
+			height:100%; /* needed for container min-height */
+			color:#848484;
+			font-family:Arial, Helvetica, sans-serif;
+		}
+		body
+		{
+			position:relative; /* needed for footer positioning*/
+			height:auto !important; /* real browsers */
+			height:100%; /* IE6: treaded as min-height*/
+			min-height:100%; /* real browsers */
+		}
+		h1
+		{
+			margin:0;
+			padding:25px;
+		}
+		main
+		{
+			padding:0 25px 25px 25px;
+		}
+		footer
+		{
+			position:absolute;
+			display:flex;
+			flex-flow: row wrap;
+			justify-content: space-around;
+			width:100%;
+			bottom:0; /* stick to bottom */
+			background-color:#0099ff;
+		}
+		footer nav
+		{
+			width:25%;
+			min-width:320px;
+			float:left;
+			margin:25px 0;
+		}
+		footer nav a
+		{
+			font-size:90%;
+			line-height:25px;
+			display:block;
+			padding:5px 25px;
+			text-decoration:none;
+			color:#ffffff;
+			background-color:rgba(0,153,255,1);
+			transition: all 0.25s ease-in;
+		}
+		footer nav a:hover
+		{
+			background-color:rgba(0,0,255,0.15);
+			transition: all 0.25s ease-in;
+		}
+		</style>
+		<script>
+
+			function footerHeight()
+			{
+				document.getElementById("documentbody").style.paddingBottom = document.getElementsByTagName("FOOTER")[0].offsetHeight+"px";
+			}
+			document.addEventListener("DOMContentLoaded", function(event) {
+				footerHeight();
+			});
+			window.onresize = function()
+			{
+				footerHeight();
+			}
+		</script>
+	</head>
+	<body>
+		<div id="documentbody">
+			<header>
+				<h1>CSS layout: 100% height with header and footer</h1>
+			</header>
+
+			<main>
+				<h2>Stick the footer where it should be.. the bottom of the page</h2>
+				<p>
+					Sometimes things that used to be really simple with tables can still appear pretty hard with CSS. This layout for instance would consist of 3 cells; two with a fixed height, and a third one in the center filling up the remaining space. Using CSS, however, you have to take a different approach.
+				</p>
+				<h3>Min-height</h3>
+				<p>
+					The #container element of this page has a min-height of 100%. That way, if the content requires more height than the viewport provides, the height of #content forces #container to become longer as well. Possible columns in #content can then be visualised with a background image on #container; divs are not table cells, and you don't need (or want) the fysical elements to create such a visual effect. If you're not yet convinced; think wobbly lines and gradients instead of straight lines and simple color schemes.
+				</p>
+				<h3>Relative positioning</h3>
+				<p>
+					Because #container has a relative position, #footer will always remain at its bottom; since the min-height mentioned above does not prevent #container from scaling, this will work even if (or rather especially when) #content forces #container to become longer.
+				</p>
+				<h3>Padding-bottom</h3>
+				<p>
+					Since it is no longer in the normal flow, padding-bottom of #content now provides the space for the absolute #footer. This padding is included in the scrolled height by default, so that the footer will never overlap the above content.
+				</p>
+				<p>
+					Scale the text size a bit or resize your browser window to test this layout.
+				</p>
+			</main>
+
+			<footer>
+				<nav>
+					<a href="">Family Cheirogaleidae</a>
+					<a href="">Microcebus; mouse lemurs</a>
+					<a href="">Lesser mouse lemur</a>
+					<a href="">Russet mouse lemur</a>
+					<a href="">Mirza (Microcebus)</a>
+					<a href="">Coquerel's dwarf lemur</a>
+					<a href="">Cheirogaleus; dwarf lemurs</a>
+					<a href="">Greater dwarf lemur</a>
+					<a href="">Fat-tailed dwarf lemur</a>
+					<a href="">Allocebus</a>
+					<a href="">Hairy-eared dwarf lemur</a>
+					<a href="">Phaner</a>
+					<a href="">Fork-marked lemur</a>
+				</nav>
+				<nav>
+					<a href="">Fat-tailed dwarf lemur</a>
+					<a href="">Allocebus</a>
+					<a href="">Hairy-eared dwarf lemur</a>
+					<a href="">Phaner</a>
+					<a href="">Fork-marked lemur</a>
+					<a href="">(Cheirogaleus major) Greater dwarf lemur</a>
+					<a href="">(Cheirogaleus medus) Fat-tailed dwarf lemur</a>
+					<a href="">Allocebus</a>
+					<a href="">(Allocebus trichotis) Hairy-eared dwarf lemur</a>
+					<a href="">Phaner</a>
+					<a href="">(Phaner furcifer) Fork-marked lemur</a>
+				</nav>
+				<nav>
+					<a href="">Family Cheirogaleidae</a>
+					<a href="">Microcebus; mouse lemurs</a>
+					<a href="">(Microcebus murinus) Lesser mouse lemur</a>
+					<a href="">(Microcebus rufus) Russet mouse lemur</a>
+					<a href="">Mirza (Microcebus)</a>
+					<a href="">Fat-tailed dwarf lemur</a>
+					<a href="">Allocebus</a>
+					<a href="">Hairy-eared dwarf lemur</a>
+					<a href="">Phaner</a>
+					<a href="">Fork-marked lemur</a>
+					<a href="">Allocebus</a>
+					<a href="">(Phaner furcifer) Fork-marked lemur</a>
+				</nav>
+				<nav>
+					<a href="">Family Cheirogaleidae</a>
+					<a href="">Microcebus; mouse lemurs</a>
+					<a href="">(Microcebus murinus) Lesser mouse lemur</a>
+					<a href="">(Microcebus rufus) Russet mouse lemur</a>
+					<a href="">Mirza (Microcebus)</a>
+					<a href="">(Mirza coquereli) Coquerel's dwarf lemur</a>
+					<a href="">Cheirogaleus; dwarf lemurs</a>
+					<a href="">(Cheirogaleus major) Greater dwarf lemur</a>
+					<a href="">(Cheirogaleus medus) Fat-tailed dwarf lemur</a>
+					<a href="">Allocebus</a>
+					<a href="">(Allocebus trichotis) Hairy-eared dwarf lemur</a>
+					<a href="">Phaner</a>
+					<a href="">(Phaner furcifer) Fork-marked lemur</a>
+				</nav>
+			</footer>
+		</div>
+	</body>
+</html>
